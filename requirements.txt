@@ -1,0 +1,6 @@
+langchain==0.0.297
+sentence-transformers==2.2.2
+sentencepiece==0.1.99
+tenacity==8.2.3
+torch==2.0.1
+transformers==4.33.2
