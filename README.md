@@ -12,7 +12,7 @@
 
 ## How to Use  ##
 <p> Download data from https://huggingface.co/datasets/Jinsns/flk/blob/main/README.md  </p>
-<p> Unzip flk.zip, then move laws_vector_store to data/vector_stores/laws_vector_store" </p> 
+<p> Unzip flk.zip, then move laws_vector_store to data/vector_stores/laws_vector_store </p> 
 <p> write your openai api_key in _check_then_answer.py_ </p>
 <p> Run _check_then_answer.py_ </p>
  
