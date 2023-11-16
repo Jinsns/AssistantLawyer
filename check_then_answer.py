@@ -21,17 +21,19 @@ import config
 openai_api_key = ""
 
 
-
 def query_vector_store(query, vector_store_path, embeddings):
     vector_store = FAISS.load_local(folder_path=vector_store_path, embeddings=embeddings)
     search_result = vector_store.similarity_search_with_score(query=query, k=8)
     retrieved_laws = []
     for (doc, l2) in search_result:
-        retrieved_laws.append(doc.page_content)
+        retrieved_law = doc.page_content
+        if len(retrieved_law) > 500:
+            retrieved_law = retrieved_law[:500]
+        retrieved_laws.append(retrieved_law)
         print(doc.page_content, ":", l2)
 
-
-    return "\n".join(retrieved_laws)
+    return retrieved_laws
+    return "\n-----------------------------\n\n".join(retrieved_laws)
 
 
 
@@ -66,7 +68,7 @@ if __name__ == "__main__":
     input = (
         f"问题：{query} \n "
         f"为了回答这个问题，我们检索到相关法条如下：\n"
-        f"{retrieved_laws}\n"
+        f"{''.join(retrieved_laws)}\n"
         f"利用以上检索到的法条，请回答问题：{query}\n"
         f"要求逻辑完善，有理有据，不允许伪造事实。"
     )
