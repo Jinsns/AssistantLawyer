@@ -71,7 +71,6 @@ with gr.Blocks(css=customCSS, theme=small_and_beautiful_theme) as demo:
                    inputs=[
                        message,
                        chatbot,
-                       embedding_model,
                        # state
                    ],
                    outputs=[message, chatbot, state, search])
